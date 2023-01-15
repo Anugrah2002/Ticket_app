@@ -1,0 +1,66 @@
+{% extends 'basic.html' %}
+{% block body %}
+<style>
+    table{
+    border-collapse:collapse;
+    }
+    th{
+    font-size:20px;
+    }
+    td{
+    text-align: center;
+    }
+</style>
+<div class="header" align="center">
+    <div>
+        <p align="center"> Administrator </p>
+    </div>
+    <div class="logout">
+        <button onclick="window.location.href='/logout/'">Logout</button>
+    </div>
+    <div class="change_password">
+        <button onclick="window.location.href='/change_password/'">Change Password</button>
+    </div>
+</div>
+<div class="main">
+    <table border="1" width="90%">
+        <thead>
+        {% if solved %}
+        <tr>
+            <th colspan="8">All Solved Tickets</th>
+        </tr>
+        {% else %}
+        <tr>
+            <th colspan="6">All Unsolved Tickets</th>
+        </tr>
+        {% endif %}
+        <tr>
+            <th>Ticket Number</th>
+            <th>Date And Time</th>
+            <th>Full Name</th>
+            <th>Registration Number</th>
+            <th>Email Address</th>
+            <th>Complaint</th>
+            {% if solved %}
+            <th>Solution</th>
+            <th>Solved By</th>
+            {% endif %}
+        </tr>
+        </thead>
+        {% for t in all_tickets %}
+        <tr>
+            <td>{{t.ticket_no}}</td>
+            <td>{{t.date_time}}</td>
+            <td>{{t.full_name}}</td>
+            <td>{{t.reg_no}}</td>
+            <td>{{t.email}}</td>
+            <td>{{t.complaint}}</td>
+            {% if solved %}
+            <td>{{t.solution}}</td>
+            <td>{{t.solved_by}}</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="header" align="center">
+    <div>
+        <p align="center"> Administrator </p>
+    </div>
+    <div class="logout">
+        <button onclick="window.location.href='/logout/'">Logout</button>
+    </div>
+    <div class="change_password">
+        <button onclick="window.location.href='/change_password/'">Change Password</button>
+    </div>
+</div>
+<div class="main">
+    <div align="center" class="form">
+        <form action="" method="post"> {% csrf_token %}
+            <table cellpadding="10">
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email" placeholder="Email Address"></td>
+                </tr>
+                <tr>
+                    <td>Branch Name</td>
+                    <td>
+                        <select name="branch" class="select_2">
+                            <option>Select Branch</option>
+                            {% for i in branches %}
+                            <option value="{{i}}">{{i|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" placeholder="Full Name"></td>
+                </tr>
+                <tr>
+                    <td>Employee Id</td>
+                    <td><input type="text" name="emp_id" placeholder="Employee Id"></td>
+                </tr>
+                <tr>
+                    <td>Contact Number</td>
+                    <td><input type="tel" name="contact_no" placeholder="Contact Number"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" value="Submit" class="button-blue">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

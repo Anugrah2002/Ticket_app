@@ -1,0 +1,107 @@
+{% extends 'basic.html' %}
+{% block title %} Home Page {% endblock %}
+{% block body %}
+<div align="center" class="header">
+    <p class="help-desk">
+        <b>
+            Help Desk!
+        </b>
+    </p>
+</div>
+<div class="main">
+    <div align="center" class="form">
+        <form action="/submit_complain/" method="post" id="complainForm"> {% csrf_token %}
+            <table cellpadding="10" width="70%" align="center">
+                <thead>
+                <tr>
+                    <th align="center" colspan="3">Complaint</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td id="message" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td>Email Address</td>
+                    <td>
+                        <input type="email" id="email" placeholder="Enter your email address" name="email">
+                    </td>
+                </tr>
+                <tr id="otpRow" hidden>
+                    <td rowspan="2">OTP</td>
+                    <td>
+                        <input type="text" id="otp"><br>
+                        <br>
+                        <p id="otp-text"></p>
+                    </td>
+                </tr>
+                <tr id="otpButtonRow" hidden>
+                    <td>
+                        <button class="button-blue" type="button" onclick="verifyOTP()">Verify OTP</button>
+                        <button class="button-blue" type="button" disabled id="resend-button" onclick="validateEmail()"></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" colspan="2">
+                        <button class="button-blue" type="button" onclick="validateEmail()" id="validate-button"> Validate Email</button>
+                    </td>
+                </tr>
+                <tr hidden class="verifiedFrom">
+                    <td>Full Name</td>
+                    <td><input type="text" name="full_name" placeholder="Full Name"></td>
+                </tr>
+                <tr hidden class="verifiedFrom">
+                    <td>Registration Number</td>
+                    <td><input type="text" name="reg_no" placeholder="Registration Number"></td>
+                </tr>
+                <tr hidden class="verifiedFrom">
+                    <td>Branch</td>
+                    <td>
+                        <select name="branch" class="select_2">
+                            <option>Select Branch</option>
+                            {% for i in branches %}
+                            <option value="{{i}}">{{i|title}}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr hidden class="verifiedFrom">
+                    <td>Complaint</td>
+                    <td><textarea name="message"></textarea></td>
+                </tr>
+                <tr hidden class="verifiedFrom">
+                    <td colspan="2" align="center">
+                        <button class="button-blue" type="button" onclick="submitForm()">Submit</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="form">
+        <form action="/search_by_ticket_no/" method="post"> {% csrf_token %}
+            <table cellpadding="10" width="70%" align="center">
+                <thead align="center">
+                <tr>
+                    <th colspan="2"> Search Ticket</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>Ticket Number</td>
+                    <td><input type="text" placeholder="Enter Ticket Number" required name="ticket_no"></td>
+                </tr>
+                <tr>
+                    <td>Email Address</td>
+                    <td><input type="email" placeholder="Enter Email Address" required name="email"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input class="button-blue" type="submit" value="search"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div>
+        <a href="/login_page/">
+            <button class="button-blue"> Administration Login</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}
+{% endblock %}
+{% block body %}
+<div class="header" align="center">
+    <div>
+        <p> Administrator </p>
+    </div>
+    <div class="logout">
+        <button onclick="window.location.href='/logout/'">Logout</button>
+    </div>
+    <div class="change_password">
+        <button onclick="window.location.href='/change_password/'">Change Password</button>
+    </div>
+</div>
+<div class="main">
+    <div style="width:70%;" class="form">
+        <div class="leftbox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon.png' %}" width="10%"> <span><b>{{tickets_created_today}}</b></span>
+                <p>Number of Tickets <br> Created Today </p>
+            </div>
+        </div>
+        <div class="middlebox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon-3.png' %}" width="10%"> <span><b>{{tickets_solved_today}}</b></span>
+                <p>Number of Tickets <br> Solved Today </p>
+            </div>
+        </div>
+        <div class="rightbox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon-1.png' %}" width="10%"> <span><b>{{tickets_left_today}}</b></span>
+                <p>Number of Tickets <br> Left to Solve Today </p>
+            </div>
+        </div>
+        <div class="leftbox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon.png' %}" width="10%"> <span><b>{{tickets_created_till_today}}</b></span>
+                <p>Number of Tickets <br> Created Till Today </p>
+            </div>
+        </div>
+        <div class="middlebox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon-3.png' %}" width="10%"> <span><b>{{tickets_solved_till_today}}</b></span>
+                <p>Number of Tickets <br> Solved Till Today </p>
+            </div>
+        </div>
+        <div class="rightbox">
+            <div align="center">
+                <img src="{% static 'icons/growth-icon-1.png' %}" width="10%"> <span><b>{{tickets_left_till_today}}</b></span>
+                <p>Number of Tickets <br> Left to Solve Till Today </p>
+            </div>
+        </div>
+    </div>
+    <div align="center">
+        {% if messages %}
+        {% for message in messages %}
+        <p class="{{ message.tags}}">{{message}}</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div align="center">
+        <a href="{% url 'all_solved_tickets' %}">
+            <button class="button-blue">All Solved Tickets</button>
+        </a>
+        <a href="{% url 'all_unsolved_tickets' %}">
+            <button class="button-blue">All Unsolved Tickets</button>
+        </a>
+    </div>
+    <div align="center">
+        <a href="add_branch_user/">
+            <button class="button-blue">Add New Branch User</button>
+        </a>
+        <a href="add_branch/">
+            <button class="button-blue">Add New Branch</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

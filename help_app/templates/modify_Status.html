@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+{% block title %} Search Page {% endblock %}
+{% block body %}
+<style>
+    table{
+        border-collapse: collapse;
+    }
+</style>
+<div class="header" align="center">
+    <div>
+        <p align="center">Modify {{data.ticket_no}}</p>
+    </div>
+    <div class="logout">
+        <button onclick="window.location.href='/logout/'">Logout</button>
+    </div>
+    <div class="change_password">
+        <button onclick="window.location.href='/change_password/'">Change Password</button>
+    </div>
+</div>
+<div class="main">
+    <table cellpadding="10" border="1" width="50%">
+        <tr>
+            <td>Ticket Number</td>
+            <td>{{data.ticket_no}}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>{{data.ticket_status}}</td>
+        </tr>
+        <tr>
+            <td>Full Name</td>
+            <td>{{data.full_name}}</td>
+        </tr>
+        <tr>
+            <td>Registration Number</td>
+            <td>{{data.reg_no}}</td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>{{data.branch_name}}</td>
+        </tr>
+        <tr>
+            <td>Complaint</td>
+            <td>{{data.complaint}}</td>
+        </tr>
+        <tr>
+            <td>Date and Time</td>
+            <td>{{data.date_time}}</td>
+        </tr>
+        <tr>
+            <td>Comment</td>
+            <td><input type="text" placeholder="comment"></td>
+        </tr>
+    </table>
+<div align="center"><a href=""><button >Submit</button></a></div>
+</div>
+{% endblock %}

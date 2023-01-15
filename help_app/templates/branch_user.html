@@ -1,0 +1,42 @@
+{% extends 'basic.html' %}
+{% block body %}
+<style>
+    table{
+        border-collapse: collapse;
+    }
+</style>
+<div class="header" align="center">
+    <div>
+        <p> {{ branches }} </p>
+    </div>
+    <div class="logout">
+        <button onclick="window.location.href='/logout/'">Logout</button>
+    </div>
+</div>
+<div class="main">
+    <table border="1" align="center" cellspacing="4" cellpadding="3">
+        <tr>
+            <td>Ticket Number</td>
+            <td>Name</td>
+            <td>email</td>
+            <td> Register Number</td>
+            <td> Complaint</td>
+            <td> Date of Lodging Complaint</td>
+            <td> Status</td>
+            <td> Modify Status</td>
+        </tr>
+        {% for i in tickets %}
+        <tr>
+            <td> {{i.ticket_no}}</td>
+            <td> {{i.full_name}}</td>
+            <td> {{i.email}}</td>
+            <td> {{i.reg_no}}</td>
+            <td> {{i.complaint}}</td>
+            <td> {{i.date_time}}</td>
+            <td> {{i.ticket_status}}</td>
+            <td align="center"><a href="{% url 'modifyStatus' i.id %}"><button class="button-blue" >Solve Ticket</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

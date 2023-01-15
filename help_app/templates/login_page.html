@@ -1,0 +1,40 @@
+{% extends 'basic.html' %}
+{% block title %}Login Page{% endblock %}
+{% block body %}
+<div align="center" class="header">
+    <p> Administrator Login </p>
+</div>
+<div class="main">
+    <div align="center" class="form login-form">
+        {% if messages %}
+        {% for m in messages %}
+        {{m}}
+        {% endfor %}
+        {% endif %}
+        <form action="/login_page/" method="post">{% csrf_token %}
+            <table cellpadding="10">
+                <thead>
+                    <tr>
+                        <th colspan="2" align="center"> Login </th>
+                    </tr>
+
+                </thead>
+                <tr>
+                    <td>Username</td>
+                    <td><input type="text" name="username"></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" id="password">
+                        <br>
+                        <input type="checkbox" onclick="showPassword()">Show Password
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" class="button-blue"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+{% endblock %}

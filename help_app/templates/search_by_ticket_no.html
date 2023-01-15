@@ -1,0 +1,44 @@
+{% extends 'basic.html' %}
+{% block title %} Search Page {% endblock %}
+{% block body %}
+<style>
+    table{
+        border-collapse: collapse;
+    }
+</style>
+<div class="header">
+    <p align="center ">Ticket Number {{ticket.ticket_no}}</p>
+</div>
+<div class="main">
+    <table cellpadding="10" border="1" width="50%">
+        <tr>
+            <td>Ticket Number</td>
+            <td>{{ticket.ticket_no}}</td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>{{ticket.ticket_status}}</td>
+        </tr>
+        <tr>
+            <td>Full Name</td>
+            <td>{{ticket.full_name}}</td>
+        </tr>
+        <tr>
+            <td>Registration Number</td>
+            <td>{{ticket.reg_no}}</td>
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>{{ticket.branch_name}}</td>
+        </tr>
+        <tr>
+            <td>Date and Time</td>
+            <td>{{ticket.date_time}}</td>
+        </tr>
+        <tr>
+            <td>Complaint</td>
+            <td>{{ticket.complaint}}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
